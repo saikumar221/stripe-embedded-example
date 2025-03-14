@@ -1,0 +1,48 @@
+<head>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src ="index.js">    </script>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+
+    <!--Product-->
+    <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <h1>
+            1 kg Sweet Potato
+        </h1>
+        <img class="product-photo" src="https://cdn.media.amplience.net/i/japancentre/recipe-1668-japanese-baked-sweet-potato/Japanese-baked-sweet-potato?$poi$&w=700&h=410&sm=c&fmt=auto" style="margin: 10px 0;">
+        <button id="checkout-button" onclick="initialize()" class="primary-button">BUY</button>
+    </div>
+    
+    <!-- Modal -->
+    <div id="checkout-modal" class="modal">
+      <div class="modal-content">
+        <button id="close-modal" style="float: right; background: none; border: none; font-size: 20px; cursor: pointer;">&times;</button>
+        <div id="checkout">
+          <!-- Checkout will insert the payment form here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Handlers-->
+    <script>
+      const modal = document.getElementById('checkout-modal');
+      const closeModal = document.getElementById('close-modal');
+      const checkoutButton = document.getElementById('checkout-button');
+
+      checkoutButton.addEventListener('click', () => {
+        modal.style.display = 'flex';
+      });
+
+      closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    </script>
+
+  </body>
